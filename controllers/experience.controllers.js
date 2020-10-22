@@ -6,14 +6,15 @@ const getExp = async (req, res) => {
 
 }
 const createExp = async (req, res) => {
-    const { title, pictureUrl, country, minimumRate, duration } = req.body;
+    const { title, pictureUrl, country, price, duration, rating } = req.body;
 
     const exp = await Experience.create({
         title,
         pictureUrl,
         country,
-        minimumRate,
+        price,
         duration,
+        rating,
     })
     res.json({
         success: true,

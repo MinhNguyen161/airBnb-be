@@ -1,13 +1,27 @@
 const mongoose = require("mongoose")
+const Schema = mongoose.Schema
 
-
-const schema = new mongoose.Schema({
-    title: String,
-    pictureUrl: String,
-    country: String,
-    minimumRate: Number,
-    duration: Number
+//================================
+//
+//  Model for an experience
+//
+//
+//================================
+const schema = Schema({
+    title: { type: String, required: true },
+    pictureUrl: { type: String, required: true },
+    author: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "User",
+    },
+    content: { type: String, required: true },
+    reviewCount: { type: Number, default: 0 },
+    whattoBring: [String],
+    isDeleted: false,
 })
+
+// Calculate ratings from User.
 
 const Experience = mongoose.model("Experience", schema);
 module.exports = Experience;
