@@ -14,7 +14,7 @@ router.post("/", userController.createUser);
  * @description Get current user info
  * @access Login required
  */
-router.get("/:id", userController.getUser);
+router.get("/:id", userController.getSingleUser);
 
 
 module.exports = router;

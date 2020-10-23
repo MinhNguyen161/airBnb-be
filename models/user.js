@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { schema } = require("./experience");
+const jwt = require("jsonwebtoken")
 const Schema = mongoose.Schema;
 
 //================================
@@ -17,9 +18,8 @@ const userSchema = Schema(
         password: { type: String, required: true, select: false },
         location: { type: String, required: true },
         language: { type: String, required: true },
-        reviewCount: { type: Number, required: false, default: 0 },
         // ============================================================
-        emailVerificationCode: { type: String, select: false },
+        emailVerificationCode: { type: String, select: false, required: false },
         emailVerified: { type: Boolean, require: false, default: false }, //chinh thang true sau
         //=============================================================
         isDeleted: { type: Boolean, default: false, select: false },
@@ -34,8 +34,6 @@ userSchema.methods.generateToken = async function () {
     });
     return accessToken;
 };
-
-
 
 
 const User = mongoose.model("User", userSchema);

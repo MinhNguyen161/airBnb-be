@@ -9,7 +9,7 @@ const Schema = mongoose.Schema
 //================================
 const schema = Schema({
     title: { type: String, required: true },
-    pictureUrl: { type: String, required: true },
+    pictureUrl: [{ type: String, required: false }],
     author: {
         type: Schema.Types.ObjectId,
         required: true,
@@ -17,7 +17,7 @@ const schema = Schema({
     },
     content: { type: String, required: true },
     reviewCount: { type: Number, default: 0 },
-    whattoBring: [String],
+    whatToBring: [String],
     isDeleted: false,
 })
 

@@ -6,48 +6,31 @@ const expController = require("../controllers/experience.controllers")
  * @description Register new user
  * @access Public
  */
-
-
-router.post('/', expController.createExp)
-
+router.post('/', expController.createExp) // 
 /**
 * @route GET all exp
 * @description Register new user
 * @access Public
 */
-router.get('/', expController.getAllExp);
-
-
-
-
+router.get('/', expController.getAllExp); // 
 /**
 * @route GET an exp with ID
 * @description Register new user 
 * @access Public
 */
-router.get('/:id', expController.getExp);
-
-
+router.get('/:id', expController.getSingleExp); //
 /**
 * @route PUT an exp
 * @description edit an exp
 * @access Public
 */
-router.put('/', expController.updateExp)
+// router.put('/', expController.updateExp)
 /**
 * @route Delete an exp
 * @description delete an user
 * @access Public
 */
-router.delete('/', expController.deleteExp)
-
-
-
-
-
-
-
-
+// router.delete('/', expController.deleteExp)
 
 
 module.exports = router;
