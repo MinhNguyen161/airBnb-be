@@ -19,7 +19,7 @@ mongoose.connect("mongodb://localhost", { useNewUrlParser: true })
 const db = mongoose.connection
 db.once("open", function () {
     console.log("MongoDB database connection established successfully!");
-    // require("./test/testSchema")
+    require("./test/testSchema")
 });
 
 app.use(cors())

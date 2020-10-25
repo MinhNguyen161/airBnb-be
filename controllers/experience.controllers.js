@@ -44,7 +44,9 @@ expController.getAllExp = catchAsync(async (req, res, next) => {
         .sort({ createdAt: -1 })
         .skip(offset)
         .limit(limit)
-        .populate("user");
+        .populate("user")
+        .populate("author");
+
     return sendResponse(res, 200, true, { exps, totalPages }, null, "");
 })
 

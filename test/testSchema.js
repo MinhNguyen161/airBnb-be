@@ -50,7 +50,7 @@ const generateData = async () => {
                 email: faker.internet.email().toLowerCase(),
                 avatarUrl: faker.image.avatar(),
                 language: faker.random.locale(),
-
+                rating: getRandomInt(0, 5),
                 password,
                 location: faker.address.city(),
             }).then(function (user) {
@@ -68,6 +68,8 @@ const generateData = async () => {
                 await Exp.create({
                     title: faker.lorem.sentence(),
                     content: faker.lorem.paragraph(),
+                    price: getRandomInt(0, 50),
+                    rating: getRandomInt(0, 5),
                     pictureUrl: [
                         faker.image.imageUrl(400, 300),
                         faker.image.imageUrl(400, 300),
@@ -76,7 +78,10 @@ const generateData = async () => {
                     whatToBring: [
                         faker.vehicle.type(),
                         faker.vehicle.type()
-                    ]
+                    ],
+                    country: faker.address.country(),
+
+
                 }).then(async (exp) => {
                     console.log("Created blog:" + exp.title);
                     exps.push(exp);
@@ -117,4 +122,4 @@ const main = async (resetDB = false) => {
 };
 
 // remove true if you don't want to reset the DB
-main();
+main(true);
