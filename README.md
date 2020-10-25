@@ -3,5 +3,8 @@ Back-end of AirBnb
 
 
 doo
-'''
-npm i nodemon express mongoose cors
+```
+npm i nodemon express mongoose cors faker jsonwebtoken
+
+
+```
