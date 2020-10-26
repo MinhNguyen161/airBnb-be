@@ -24,7 +24,7 @@ router.get('/:id', expController.getSingleExp); //
 * @description edit an exp
 * @access Public
 */
-// router.put('/', expController.updateExp)
+router.put('/:id', expController.updateExp)
 /**
 * @route Delete an exp
 * @description delete an user

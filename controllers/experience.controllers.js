@@ -20,6 +20,34 @@ expController.createExp = catchAsync(async (req, res) => {
     })
     return sendResponse(res, 200, true, exp, null, "Successfully created an Experience")
 })
+expController.updateExp = catchAsync(async (req, res, next) => {
+    const author = req.userId;
+    const blogId = req.params.id;
+    const { title, pictureUrl, country, price, duration, whatToBring, content } = req.body;
+
+    const exp = await Experience.findOneAndUpdate(
+        { _id: blogId, author: author },
+        {
+            content: content,
+            title: title,
+            pictureUrl, pictureUrl,
+            price: price,
+            whatToBring: whatToBring,
+            country: country,
+            duration: duration
+        },
+        { new: true }
+    );
+    if (!exp)
+        return next(
+            new AppError(
+                400,
+                "EXP not found or User not authorized",
+                "Update EXP Error"
+            )
+        );
+    return sendResponse(res, 200, true, blog, null, "Update Experience successful");
+});
 
 // expController.editExp = catchAsync(async, (req, res) => {
 

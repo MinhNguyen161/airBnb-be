@@ -15,6 +15,7 @@ const schema = Schema({
         required: true,
         ref: "User",
     },
+    duration: { type: Number, default: 0 },
     content: { type: String, required: true },
     reviewCount: { type: Number, default: 0 },
     averageRating: { type: Number, default: 0 },
