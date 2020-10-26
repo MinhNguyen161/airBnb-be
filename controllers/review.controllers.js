@@ -21,8 +21,7 @@ reviewController.createReview = catchAsync(async (req, res, next) => {
         experience: expId,
         rating
     })
-    console.log(user)
-    return sendResponse(res, 200, true, { user, accessToken }, null, "Create user successful");
+    return sendResponse(res, 200, true, { review }, null, "Create user successful");
 })
 
 
