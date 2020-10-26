@@ -16,9 +16,19 @@ reviewSchema.statics.calculateReviews = async function (expId) {
     await Exp.findByIdAndUpdate(expId, { reviewCount: reviewCount });
 };
 
+reviewSchema.statics.calculateAverage = async function (expId) {
+    const ans = await Review.aggregate().match({ experience: expId }).group({
+        "_id": null,
+        "average": { "$avg": "$rating" }
+    });
+    await Exp.findByIdAndUpdate(expId, { averageRating: ans[0].average })
+
+}
+
 //================================================================================
 reviewSchema.post("save", async function () {
     await this.constructor.calculateReviews(this.experience); // PHAI PASS CAI ID CUA NO VAO
+    await this.constructor.calculateAverage(this.experience);
 });
 //================================================================================
 

@@ -58,7 +58,7 @@ const generateData = async () => {
                 users.push(user);
             });
         }
-        console.log(`| Each user writes ${otherNum} exp`);
+        console.log(`| Each user writes ${otherNum} exp`); // exp
         console.log("-------------------------------------------");
         for (let i = 0; i < userNum; i++) {
             console.log(
@@ -69,7 +69,6 @@ const generateData = async () => {
                     title: faker.lorem.sentence(),
                     content: faker.lorem.paragraph(),
                     price: getRandomInt(0, 50),
-                    rating: getRandomInt(0, 5),
                     pictureUrl: [
                         faker.image.imageUrl(400, 300),
                         faker.image.imageUrl(400, 300),

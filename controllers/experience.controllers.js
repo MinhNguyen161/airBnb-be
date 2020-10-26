@@ -40,7 +40,7 @@ expController.getAllExp = catchAsync(async (req, res, next) => {
     })
     const totalPages = Math.ceil(totalExp / limit);
     const offset = limit * (page - 1);
-    const exps = await Experience.find(filter)
+    const exps = await Experience.find({ ...filter, isDeleted: false })
         .sort({ createdAt: -1 })
         .skip(offset)
         .limit(limit)

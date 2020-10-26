@@ -41,8 +41,8 @@ reviewController.getAllReviews = catchAsync(async (req, res, next) => {
     const reviews = await Review.find({ experience: expId })
         .sort({ createdAt: -1 })
         .skip(offset)
-        .limit(limit);
-
+        .limit(limit)
+        .populate("user")
 
     return sendResponse(res, 200, true, { reviews, totalPages }, null, "");
 });

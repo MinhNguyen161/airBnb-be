@@ -17,6 +17,7 @@ const schema = Schema({
     },
     content: { type: String, required: true },
     reviewCount: { type: Number, default: 0 },
+    averageRating: { type: Number, default: 0 },
     price: { type: Number, required: true },
     whatToBring: [String],
     isDeleted: false,
