@@ -8,7 +8,7 @@ const authMiddleware = require("../middleware/authentication");
 /**
  * @route POST api/users
  * @description create a review for an experience
- * @access Public
+ * @access Login
  */
 router.post("/:id", authMiddleware.loginRequired, reviewController.createReview); //Dung sau
 /**

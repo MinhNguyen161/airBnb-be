@@ -21,6 +21,10 @@ expController.createExp = catchAsync(async (req, res) => {
     return sendResponse(res, 200, true, exp, null, "Successfully created an Experience")
 })
 
+// expController.editExp = catchAsync(async, (req, res) => {
+
+//     const { title, pictureUrl, country, price, duration, whatToBring, content } = req.body
+// })
 
 expController.getSingleExp = catchAsync(async (req, res) => {
     const exp = await (await Experience.findById(req.params.id))
@@ -34,13 +38,12 @@ expController.getAllExp = catchAsync(async (req, res, next) => {
     let { page, limit, sortBy, ...filter } = { ...req.query };
     page = parseInt(page) || 1;
     limit = parseInt(limit) || 10;
-    const totalExp = await Experience.countDocuments({
-        ...filter,
-        isDeleted: false,
-    })
+    const totalExp = await Experience.find(filter).countDocuments()
+
+    console.log("totalEXp", totalExp)
     const totalPages = Math.ceil(totalExp / limit);
     const offset = limit * (page - 1);
-    const exps = await Experience.find({ ...filter, isDeleted: false })
+    const exps = await Experience.find(filter)
         .sort({ createdAt: -1 })
         .skip(offset)
         .limit(limit)
